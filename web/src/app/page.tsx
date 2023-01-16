@@ -1,5 +1,10 @@
+import css from './home.module.css'
+import { Tabuleiro } from './../components';
+
 export default function Home() {
   return (
-    <h1>Hello</h1>
+    <div className={css.page}>
+      <Tabuleiro />
+    </div>
   )
 }
