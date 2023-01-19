@@ -20,7 +20,12 @@
   font-size: 1.2rem;
 }
 
-.lago{
+.lago {
+  cursor: not-allowed;
+}
+
+.inativo {
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: not-allowed;
 }
 
@@ -68,7 +73,7 @@
     transform-origin: bottom left;
     z-index: -1;
   }
-  
+
   &::after {
     position: absolute;
     content: "";
@@ -80,7 +85,6 @@
     transform-origin: bottom right;
     z-index: -1;
   }
-  
 }
 
 .sideA {
