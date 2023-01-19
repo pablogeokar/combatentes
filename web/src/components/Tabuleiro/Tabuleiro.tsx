@@ -3,6 +3,7 @@ import styles from './Tabuleiro.module.scss'
 export default function Tabuleiro() {
   const casas = []
   const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+  const lagos = ['C5', 'C6', 'D5', 'D6', 'G5', 'G6', 'H5', 'H6']
 
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < letras.length; j++) {
@@ -64,11 +65,13 @@ export default function Tabuleiro() {
       <div className={styles.tabuleiro}>
         {
           casas.map(casa => (
-            <div key={casa} className={styles.casa}></div>
+            <div
+              key={casa}
+              id={casa}
+              className={`${styles.casa} ${lagos.includes(casa) ? styles.lago : ''}`} />
           ))
         }
       </div>
     </div>
-
   )
 }
