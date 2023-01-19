@@ -1,4 +1,7 @@
-import'./global.css'
+"use client"
+
+import { GameContextProvider } from '@/context'
+import './global.css'
 
 export default function RootLayout({
   children,
@@ -6,9 +9,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <head />
-      <body>{children}</body>
-    </html>
+    <GameContextProvider>
+      <html lang="pt-br">
+        <head />
+        <body>{children}</body>
+      </html>
+    </GameContextProvider>
   )
 }
