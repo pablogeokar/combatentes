@@ -6,7 +6,7 @@ import { useGameContext } from './../../context/hook';
 
 interface CardProps {
   id: string
-  cardType: 'Bandeira' | 'Bomba'
+  cardType: 'Bandeira' | 'Bomba' | 'Soldado'
 }
 
 
@@ -27,6 +27,9 @@ export default function Card({ id, cardType }: CardProps) {
       break;
     case 'Bomba':
       image = '/pecas/bomba.png'
+      break;
+    case 'Soldado':
+      image = '/pecas/soldado.png'
       break;
     default:
       break;

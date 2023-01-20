@@ -6,6 +6,7 @@ import { Tabuleiro, Card } from '@/components';
 export default function Home() {
 
   const bombas = [...Array(6)]
+  const soldados = [...Array(8)]
 
   return (
     <>
@@ -16,6 +17,9 @@ export default function Home() {
         <Card id="bandeira" cardType='Bandeira' />
         {
           bombas.map((_, index) => (<Card key={index} cardType='Bomba' id={`bomba-${index}`} />))
+        }
+        {
+          soldados.map((_, index) => (<Card key={index} cardType='Soldado' id={`soldado-${index}`} />))
         }
       </div>
     </>

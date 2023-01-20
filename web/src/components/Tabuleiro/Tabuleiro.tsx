@@ -27,21 +27,28 @@ export default function Tabuleiro() {
 
 
   const moveCard = (e: any) => {
+    // Se não tiver nenhum card selecionado então já aborta o processo
     if (selectedCard === '') return
 
+    // Seleciona a casa desejada
     const casa = document.querySelector(`#${e.target.id}`) as HTMLDivElement
 
+    // Caso a casa esteja posicionada no lago ou na parte inativa do tabuleiro então
+    // o processo também ser´pa abortado
     if (casa.classList.contains('Tabuleiro_lago__WjNwR')) return
+    if (casa.classList.contains('Tabuleiro_inativo__6Up5h')) return
 
+    // Move o card para a posição da casa selecionada
     const card = document.querySelector(`#${selectedCard}`) as HTMLDivElement
     card.style.position = 'absolute'
     card.style.top = e.target.offsetTop + 'px'
     card.style.left = e.target.offsetLeft + 'px'
 
+    // Limpa o card da memória
     setSelectedCard('')
   }
 
-
+  // Cria um array com 100 posições, sendo 10 posições para cada letra do array
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < letras.length; j++) {
       casas.push(`${letras[j]}${i + 1}`)
@@ -51,54 +58,6 @@ export default function Tabuleiro() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <span>A</span>
-        <span>B</span>
-        <span>C</span>
-        <span>D</span>
-        <span>E</span>
-        <span>F</span>
-        <span>G</span>
-        <span>H</span>
-        <span>I</span>
-        <span>J</span>
-      </div>
-      <div className={styles.footer}>
-        <span>A</span>
-        <span>B</span>
-        <span>C</span>
-        <span>D</span>
-        <span>E</span>
-        <span>F</span>
-        <span>G</span>
-        <span>H</span>
-        <span>I</span>
-        <span>J</span>
-      </div>
-      <div className={styles.sideA}>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span>7</span>
-        <span>8</span>
-        <span>9</span>
-        <span>10</span>
-      </div>
-      <div className={styles.sideB}>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span>7</span>
-        <span>8</span>
-        <span>9</span>
-        <span>10</span>
-      </div>
       <div className={styles.tabuleiro}>
         {
           casas.map(casa => (
