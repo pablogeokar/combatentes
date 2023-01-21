@@ -3,6 +3,7 @@
 import { GameContextProvider } from '@/context'
 import './global.css'
 
+
 export default function RootLayout({
   children,
 }: {
