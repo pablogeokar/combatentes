@@ -2,6 +2,7 @@
 
 import css from './home.module.css'
 import { Tabuleiro, Peca } from '@/components';
+import DialogBox from './../components/DialogBox/DialogBox';
 
 export default function Home() {
 
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <div className={css.page}>
       <Tabuleiro />
+
       <div className={css.cards}>
         <Peca id="bandeira" nome='Bandeira' />
         {
@@ -47,6 +49,13 @@ export default function Home() {
         <Peca id="marechal" nome='Marechal' />
         <Peca id="espiao" nome='Espiao' />
       </div>
+
+
+      <DialogBox>
+        <h1>Início do jogo!</h1>
+        <h3>Monte a sua estratégia</h3>
+      </DialogBox>
+
     </div>
   )
 }
