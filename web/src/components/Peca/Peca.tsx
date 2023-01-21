@@ -3,12 +3,12 @@
 import styles from './Peca.module.scss'
 import { useGameContext } from '../../context/hook';
 
-interface CardProps {
+interface PecaProps {
   id: string
-  nome: 'Bandeira' | 'Bomba' | 'Soldado'
+  nome: 'Bandeira' | 'Bomba' | 'Soldado' | 'Cabo' | 'Sargento' | 'Tenente' | 'Capitao' | 'Major' | 'Coronel' | 'General' | 'Marechal' | 'Espiao'
 }
 
-export default function Card({ id, nome }: CardProps) {
+export default function Peca({ id, nome }: PecaProps) {
 
   const { setSelectedCard } = useGameContext()
 
@@ -27,6 +27,33 @@ export default function Card({ id, nome }: CardProps) {
       break;
     case 'Soldado':
       image = '/pecas/soldado.png'
+      break;
+    case 'Cabo':
+      image = '/pecas/cabo.png'
+      break;
+    case 'Sargento':
+      image = '/pecas/sargento.png'
+      break;
+    case 'Tenente':
+      image = '/pecas/tenente.png'
+      break;
+    case 'Capitao':
+      image = '/pecas/capitao.png'
+      break;
+    case 'Major':
+      image = '/pecas/major.png'
+      break;
+    case 'Coronel':
+      image = '/pecas/coronel.png'
+      break;
+    case 'General':
+      image = '/pecas/general.png'
+      break;
+    case 'Marechal':
+      image = '/pecas/marechal.png'
+      break;
+    case 'Espiao':
+      image = '/pecas/spy.png'
       break;
     default:
       break;
