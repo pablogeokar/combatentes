@@ -1,7 +1,7 @@
 'use client'
 
 import css from './home.module.css'
-import { Tabuleiro, Card } from '@/components';
+import { Tabuleiro, Peca } from '@/components';
 
 export default function Home() {
 
@@ -9,20 +9,17 @@ export default function Home() {
   const soldados = [...Array(8)]
 
   return (
-    <>
-      <div className={css.page}>
-        <Tabuleiro />
-      </div>
+    <div className={css.page}>
+      <Tabuleiro />
       <div className={css.cards}>
-        <Card id="bandeira" cardType='Bandeira' />
+        <Peca id="bandeira" nome='Bandeira' />
         {
-          bombas.map((_, index) => (<Card key={index} cardType='Bomba' id={`bomba-${index}`} />))
+          bombas.map((_, index) => (<Peca key={index} nome='Bomba' id={`bomba-${index}`} />))
         }
         {
-          soldados.map((_, index) => (<Card key={index} cardType='Soldado' id={`soldado-${index}`} />))
+          soldados.map((_, index) => (<Peca key={index} nome='Soldado' id={`soldado-${index}`} />))
         }
       </div>
-
-    </>
+    </div>
   )
 }

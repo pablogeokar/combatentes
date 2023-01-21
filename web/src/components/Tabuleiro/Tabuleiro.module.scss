@@ -9,6 +9,7 @@
 }
 
 .tabuleiro {
+  position: relative;
   grid-area: content;
   display: flex;
   flex-wrap: wrap;

@@ -1,2 +1,2 @@
 export { default as Tabuleiro } from "./Tabuleiro";
-export { default as Card } from "./Card";
+export { default as Peca } from "./Peca";

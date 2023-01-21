@@ -1,17 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import styles from './Card.module.scss'
-import { useGameContext } from './../../context/hook';
+import styles from './Peca.module.scss'
+import { useGameContext } from '../../context/hook';
 
 interface CardProps {
   id: string
-  cardType: 'Bandeira' | 'Bomba' | 'Soldado'
+  nome: 'Bandeira' | 'Bomba' | 'Soldado'
 }
 
-
-
-export default function Card({ id, cardType }: CardProps) {
+export default function Card({ id, nome }: CardProps) {
 
   const { setSelectedCard } = useGameContext()
 
@@ -21,7 +18,7 @@ export default function Card({ id, cardType }: CardProps) {
 
 
   let image
-  switch (cardType) {
+  switch (nome) {
     case 'Bandeira':
       image = '/pecas/bandeira.png'
       break;

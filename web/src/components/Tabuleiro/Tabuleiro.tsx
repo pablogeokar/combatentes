@@ -1,6 +1,5 @@
 import styles from './Tabuleiro.module.scss'
 import { useGameContext } from './../../context/hook';
-import { Card } from '@/components';
 
 export default function Tabuleiro() {
 
