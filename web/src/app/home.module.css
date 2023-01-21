@@ -3,3 +3,11 @@
   height: 100vh;
   place-items: center;
 }
+
+.cards {  
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+  max-width: 750px;
+  flex-wrap: wrap;
+}

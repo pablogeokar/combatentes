@@ -13,7 +13,7 @@ export default function Home() {
       <div className={css.page}>
         <Tabuleiro />
       </div>
-      <div style={{ display: 'flex', padding: '16px', gap: '16px' }}>
+      <div className={css.cards}>
         <Card id="bandeira" cardType='Bandeira' />
         {
           bombas.map((_, index) => (<Card key={index} cardType='Bomba' id={`bomba-${index}`} />))
@@ -22,6 +22,7 @@ export default function Home() {
           soldados.map((_, index) => (<Card key={index} cardType='Soldado' id={`soldado-${index}`} />))
         }
       </div>
+
     </>
   )
 }

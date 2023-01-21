@@ -1,17 +1,21 @@
-.tabuleiro {
-  grid-area: content;
-  display: flex;
-  flex-wrap: wrap;
-  width: 800px;
-  height: 800px;
-  background: url("/bg.jpg");
-  background-size: contain;
-}
+@import "../../styles/variables.scss";
 
 .container {
   display: block;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.tabuleiro {
+  grid-area: content;
+  display: flex;
+  flex-wrap: wrap;
+  width: $tabuleiro-size;
+  height: $tabuleiro-size;
+  background: url("/bg.jpg");
+  background-size: contain;  
 }
 
 .lago {
@@ -19,13 +23,12 @@
 }
 
 .inativo {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
   cursor: not-allowed !important;
 }
 
 .casa {
-  width: 80px;
-  height: 80px;
+  width: $tabuleiro-size / 10;
+  height: $tabuleiro-size / 10;
   cursor: pointer;
-  /* background-color: rgba(255, 255, 255, 0.2);*/
 }
