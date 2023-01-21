@@ -40,13 +40,13 @@ export default function Tabuleiro() {
 
     // Move o card para a posição da casa selecionada
     const card = document.querySelector(`#${selectedCard}`) as HTMLDivElement
-    
+
     casa.appendChild(card)
-    
+
     card.style.position = 'absolute'
     card.style.top = e.target.offsetTop + 'px'
     card.style.left = e.target.offsetLeft + 'px'
-    
+
 
     // Limpa o card da memória
     setSelectedCard('')
@@ -62,7 +62,7 @@ export default function Tabuleiro() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.tabuleiro}>
+      <div className={styles['tabuleiro']}>
         {
           casas.map(casa => (
             <div

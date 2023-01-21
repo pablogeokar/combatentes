@@ -16,7 +16,7 @@
   width: $tabuleiro-size;
   height: $tabuleiro-size;
   background: url("/bg.jpg");
-  background-size: contain;  
+  background-size: contain;
 }
 
 .lago {
@@ -32,4 +32,16 @@
   width: $tabuleiro-size / 10;
   height: $tabuleiro-size / 10;
   cursor: pointer;
+
+  div {
+    position: relative;
+    display: grid;
+    place-items: center;
+
+    img {
+      border-radius: 4px;
+      width: 90%;
+      height: 90%;
+    }
+  }
 }

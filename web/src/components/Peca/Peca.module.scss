@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.card {
+.peca {
   width: $tabuleiro-size / 10;
   height: $tabuleiro-size / 10;
   opacity: .95;
@@ -11,7 +11,7 @@
   transition: all .5s ease-in-out;
 }
 
-.image {
+.imagem {
   width: $tabuleiro-size / 10;
   height: $tabuleiro-size / 10;
   pointer-events: none;

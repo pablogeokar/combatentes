@@ -56,16 +56,17 @@ export default function Peca({ id, nome }: PecaProps) {
       image = '/pecas/spy.png'
       break;
     default:
+      image = '/pecas/pino64.png'
       break;
   }
 
   return (
     <div
       id={id}
-      className={styles.card}
+      className={styles.peca}
       onClick={(e) => SelectCard(e)}
     >
-      <img src={image} alt='' className={styles.image} />
+      <img src={image} alt='' className={styles.imagem} />
     </div>
   )
 }
