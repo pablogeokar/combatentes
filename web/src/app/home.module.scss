@@ -18,6 +18,7 @@
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 4px;
   box-shadow: 0 0 3px #fff;
+  overflow-y: auto;
   z-index: 1;
 
   h1 {
@@ -29,9 +30,9 @@
   }
 
   h2 {
+    filter: drop-shadow(1px 1px 2px #000);
     font-size: 2.2rem;
     font-weight: 300;
-    filter: drop-shadow(1px 1px 2px #000);
   }
 
   hr {
@@ -40,42 +41,69 @@
 }
 
 .footer {
-  position: fixed;
+  background-image: url("/soldiers-311384_1280.png");
   bottom: 0;
   height: 500px;
+  position: fixed;
   width: 100vw;
-  background-image: url("/soldiers-311384_1280.png");
   z-index: 0;
 }
 
 .icon {
-  position: absolute;
-  left: 8px;
-  top: 0;
   color: rgba(255, 255, 255, 0.1);
+  left: 8px;
+  position: absolute;
+  top: 0;
 }
 
 .partidas {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
   flex-wrap: wrap;
-  margin: 16px 0;
-  gap: 16px;
+  font-size: 1.1rem;
   font-weight: 300;
-  font-size: 1.2rem;  
+  gap: 16px;
+  justify-content: space-between;
+  margin: 16px 0;
 }
 
 .btn {
-  outline: none;
-  border: none;
-  padding: 8px 16px;
+  align-items: center;
+  background-color: #e4e00b;
+  //background-color: $primaryColor;
   border-radius: 4px;
-  background-color: $primaryColor;
-  background-color: #fffea1;
-  color: $secondaryColor;
+  border: none;
+  color: #1c1c1c;
   cursor: pointer;
+  display: flex;
+  font-size: 1.1rem;
+  gap: 8px;
   margin: 0;
+  outline: none;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px #000;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.btnInverted {
+  align-items: center;
+  background-color: #fff;  
+  border-radius: 4px;
+  border: 1px solid #1c1c1c;
+  color: #1c1c1c;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  font-size: 1.1rem;
+  gap: 8px;  
+  outline: none;
+  padding: 16px;
+  width: 100%;
+  box-shadow: 0 0 4px #000;
 
   &:hover {
     filter: brightness(0.8);

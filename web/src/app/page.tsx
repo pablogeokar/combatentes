@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './home.module.scss'
-import { GameController } from 'phosphor-react'
+import { GameController, Plus } from 'phosphor-react'
 
 export default function Home() {
 
@@ -9,17 +9,17 @@ export default function Home() {
     <div className={styles.page}>
       <div className={styles.salas}>
 
-        <GameController size={96} className={styles.icon} />
+
         <h1>Entre em uma</h1>
-        <h1>PARTIDA</h1>
-        <h2>ou crie a sua!</h2>
+        <h1>sala ou crie uma!</h1>
+        <button className={styles.btnInverted}>Criar uma sala <Plus size={24} /></button>
         <hr />
 
         <div className={styles.partidas}>
           <span>Pablo George</span>
           <h4>X</h4>
           <span>Romário Torres</span>
-          <button className={styles.btn}>Jogar</button>
+          <button className={styles.btn}>Jogar <GameController size={24} /></button>
         </div>
         <hr />
 
@@ -27,7 +27,7 @@ export default function Home() {
           <span>Pablo George</span>
           <h4>X</h4>
           <span>Romário Torres</span>
-          <button className={styles.btn}>Jogar</button>
+          <button className={styles.btn}>Jogar <GameController size={24} /></button>
         </div>
         <hr />
 
