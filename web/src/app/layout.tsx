@@ -2,6 +2,7 @@
 
 import { GameContextProvider } from '@/context'
 import './global.css'
+import Providers from './providers'
 
 
 export default function RootLayout({
@@ -10,11 +11,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <GameContextProvider>
-      <html lang="pt-br">
-        <head />
-        <body>{children}</body>
-      </html>
-    </GameContextProvider>
+    <Providers>
+      <GameContextProvider>
+        <html lang="pt-br">
+          <head />
+          <body>{children}</body>
+        </html>
+      </GameContextProvider>
+    </Providers>
   )
 }
