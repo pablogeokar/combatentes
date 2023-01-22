@@ -10,12 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Rooms {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  player1 String
-  player2 String?
-}
-
 model User {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   name     String
@@ -23,4 +17,12 @@ model User {
   image    String?
   password String
   active   Boolean @default(true)
+}
+
+model Rooms {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  player1_id   String
+  player1_name String
+  player2_id   String?
+  player2_name String?
 }

@@ -4,12 +4,15 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    domains: ["**.googleusercontent.com"],
+    /*
     remotePatterns: [
       {
         protocol: "https",
         hostname: "**.googleusercontent.com",
       },
     ],
+    */
   },
 };
 

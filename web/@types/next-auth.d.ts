@@ -10,4 +10,16 @@ declare module "next-auth" {
       id: string | number;
     } & DefaultSession["user"];
   }
+
+  interface JWT {
+    id: string | number;
+    name: string;
+    email: string;
+    picture: string;
+    sub: string;
+    id: string;
+    iat: number;
+    exp: number;
+    jti: string;
+  }
 }

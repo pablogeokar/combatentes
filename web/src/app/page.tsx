@@ -3,22 +3,33 @@
 import styles from './home.module.scss'
 import { signIn, useSession, signOut } from 'next-auth/react'
 import { GameController, Plus, PaperPlaneRight, GooglePlayLogo } from 'phosphor-react'
-import prisma from '@/lib/prisma';
 
 export default function Home() {
 
   const { data: session } = useSession()
 
-  console.log(session)
 
   async function handleCriaSala() {
     if (!session) return signIn('google')
 
-    /*
-    const rooms = await prisma.Rooms.create({
-      player1: session.user?.id
+    const post = await fetch('/api/rooms', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        player1_id: session.user?.id,
+        player1_name: session.user?.name
+      })
     })
-    */
+
+    const response = await post.json()
+
+    if (response.error) {
+      alert(response.error)
+    }
+
+
 
   }
 
@@ -67,10 +78,7 @@ export default function Home() {
             <span>{session.user?.name}</span>
             <span onClick={() => signOut()}>Sair</span>
           </div>
-          <img
-            src={session.user?.image as string}
-            alt={session.user?.name as string}
-          />
+          <img src={session.user?.image as string} alt={session.user?.name as string} onError={(e: any) => { e.target.onError = null; e.target.src = "/user.png" }} />
         </div>
         :
         <button className={styles.btnLogin} onClick={() => signIn('google')}>Login com Google <GooglePlayLogo /></button>
