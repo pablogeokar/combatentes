@@ -3,10 +3,24 @@
 import styles from './home.module.scss'
 import { signIn, useSession, signOut } from 'next-auth/react'
 import { GameController, Plus, PaperPlaneRight, GooglePlayLogo } from 'phosphor-react'
+import prisma from '@/lib/prisma';
 
 export default function Home() {
 
   const { data: session } = useSession()
+
+  console.log(session)
+
+  async function handleCriaSala() {
+    if (!session) return signIn('google')
+
+    /*
+    const rooms = await prisma.Rooms.create({
+      player1: session.user?.id
+    })
+    */
+
+  }
 
   return (
     <div className={styles.page}>
@@ -15,7 +29,7 @@ export default function Home() {
 
         <h1>Entre em partida</h1>
         <h1>ou crie uma!</h1>
-        <button className={styles.btnWhite}>Criar uma partida agora<Plus size={24} /></button>
+        <button onClick={handleCriaSala} className={styles.btnWhite}>Criar uma partida agora<Plus size={24} /></button>
         <hr />
 
         <div className={styles.partidas}>

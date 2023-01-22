@@ -18,6 +18,8 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
 
+        //const { email, password } = credentials;
+
         // Se o email ou senha não existirem então retorna null
         if (!email || !password) {
           throw new Error("Email e Senha são obrigatórios");
@@ -54,10 +56,33 @@ const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      //clientId: process.env.GOOGLE_CLIENT_ID,
+      //clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   pages: {
     signIn: "/login",
+  },
+  callbacks: {
+    async signIn({ user, account, profile }) {
+      //console.log("signin", { user, account, profile });
+
+      return Promise.resolve(true);
+    },
+    async session({ session, user }) {
+      if (session.user) session.user.id = user.id;
+
+      return Promise.resolve(session);
+    },
+
+    async jwt({ token, user, account, profile }) {
+      console.log(token);
+      if (user?.id) {
+        token.id = user?.id;
+      }
+
+      return Promise.resolve(token);
+    },
   },
 };
 

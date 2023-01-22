@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Rooms {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  player1 String
+  player2 String?
+}
+
 model User {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   name     String
