@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './home.module.scss'
-import { GameController, Plus, PaperPlaneRight } from 'phosphor-react'
+import { GameController, Plus, PaperPlaneRight, GooglePlayLogo } from 'phosphor-react'
 
 export default function Home() {
 
@@ -41,9 +41,20 @@ export default function Home() {
 
       </div>
 
-
       <div className={styles.footer} />
 
+      {/** 
+      <div className={styles.usuario}>
+      
+        <div>
+          <span>Pablo George</span>
+          <span>Sair</span>
+        </div>
+        <img src="https://github.com/pablogeokar.png" alt="Pablo" />
+      </div>
+       */}
+
+      <button className={styles.btnLogin}>Login com Google <GooglePlayLogo /></button>
     </div>
   )
 }

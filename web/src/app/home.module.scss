@@ -11,8 +11,8 @@
 .salas {
   position: relative;
   margin: 8px;
-  max-width: 600px;
-  height: 550px;
+  max-width: 650px;
+  max-height: 650px;
   color: #ecf0f1;
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.75);
@@ -125,5 +125,65 @@
 
   &:hover {
     filter: brightness(0.8);
+  }
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  right: 32px;
+  top: 16px;
+  padding: 16px;
+  color: #ecf0f1;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    span {
+      filter: drop-shadow(0 1px 1px #000);
+    }
+
+    span:last-of-type {
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 1px 1px #000);
+  }
+}
+
+.btnLogin {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  right: 32px;
+  top: 16px;
+  //background-color: #e4e00b;
+  background-color: transparent;
+  //color: #1c1c1c;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  //border: 2px solid #e4e00b;
+  border: 2px solid #fff;
+  //box-shadow: 0 0 2px 1px #000;
+  filter: drop-shadow(0 1px 1px #000);
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
   }
 }
