@@ -1,0 +1,105 @@
+@import "../../styles/variables.scss";
+
+.salas {
+  position: relative;
+  margin: 8px;
+  max-width: 650px;
+  max-height: 650px;
+  color: #ecf0f1;
+  padding: 32px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  box-shadow: 0 0 3px #fff;
+  overflow-y: auto;
+  z-index: 1;
+
+  h1 {
+    color: #ecf0f1;
+    color: $primaryColor;
+    font-weight: 700;
+    font-size: 2.4rem;
+    filter: drop-shadow(1px 1px 2px #000);
+  }
+
+  h2 {
+    filter: drop-shadow(1px 1px 2px #000);
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+
+  hr {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+.partidas {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  font-weight: 300;
+  gap: 16px;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.btn {
+  align-items: center;
+  background-color: #e4e00b;
+  border-radius: 4px;
+  border: none;
+  color: #1c1c1c;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  outline: none;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px #000;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.btnEntrar {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  border: none;
+  color: #1c1c1c;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  outline: none;
+  padding: 8px 16px;
+  box-shadow: 0 0 4px #000;
+  max-width: 100%;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.btnWhite {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #1c1c1c;
+  color: #1c1c1c;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  font-size: 1.2rem;
+  gap: 8px;
+  outline: none;
+  padding: 16px;
+  width: 100%;
+  box-shadow: 0 0 4px #000;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}

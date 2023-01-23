@@ -20,9 +20,10 @@ model User {
 }
 
 model Rooms {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
   player1_id   String
   player1_name String
   player2_id   String?
   player2_name String?
+  createdAt    DateTime @default(now())
 }

@@ -3,7 +3,7 @@
 import css from './jogo.module.css'
 import { Tabuleiro, Peca, DialogBox } from '@/components';
 
-export default function Home() {
+export default function Jogo() {
 
   const bombas = [...Array(6)]
   const soldados = [...Array(8)]
