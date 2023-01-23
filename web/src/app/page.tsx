@@ -4,10 +4,15 @@ import styles from './home.module.scss'
 import { signIn, useSession, signOut } from 'next-auth/react'
 import { GameController, Plus, PaperPlaneRight, GooglePlayLogo } from 'phosphor-react'
 
+async function getRooms() {
+  const response = await fetch('/api/rooms')
+  return await response.json()
+}
+
+
 export default function Home() {
 
   const { data: session } = useSession()
-
 
   async function handleCriaSala() {
     if (!session) return signIn('google')
@@ -28,8 +33,6 @@ export default function Home() {
     if (response.error) {
       alert(response.error)
     }
-
-
 
   }
 
@@ -78,7 +81,7 @@ export default function Home() {
             <span>{session.user?.name}</span>
             <span onClick={() => signOut()}>Sair</span>
           </div>
-          <img src={session.user?.image as string} alt={session.user?.name as string} onError={(e: any) => { e.target.onError = null; e.target.src = "/user.png" }} />
+          <img src={session.user?.image ? session.user?.image as string : '/user.png'} alt={session.user?.name as string} onError={(e: any) => { e.target.onError = null; e.target.src = "/user.png" }} />
         </div>
         :
         <button className={styles.btnLogin} onClick={() => signIn('google')}>Login com Google <GooglePlayLogo /></button>
