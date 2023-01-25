@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { GameController, Plus } from 'phosphor-react'
+import { GameController, Plus, PaperPlaneRight } from 'phosphor-react'
 import { signIn, useSession } from 'next-auth/react'
 import styles from './Salas.module.scss'
 
@@ -14,6 +14,29 @@ interface SalasData {
 export default function Salas() {
   const { data: session } = useSession()
   const [salas, setSalas] = useState<SalasData[]>([])
+
+  async function handleEntraNaSala(salaId: string, salaOwner: string) {
+    if (!session) signIn('google')
+
+    if (session?.user?.id === salaOwner) return alert('Você já está na sala, aguarde a entrada de outro jogador')
+
+    if (session) {
+      const post = await fetch(`/api/rooms/${salaId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'userid': `${session.user?.id}`,
+          'username': `${session.user?.name}`,
+        },
+        body: JSON.stringify({
+          player2_id: session.user?.id as string,
+          player2_name: session.user?.name
+        })
+      })
+    }
+    //http://localhost:3000/api/rooms/63cf128ddefb29f822b053d0
+
+  }
 
   async function handleCriaSala() {
     if (!session) signIn('google')
@@ -56,10 +79,14 @@ export default function Salas() {
 
   return (
     <div className={styles.salas}>
-      <h1>Entre em partida</h1>
-      <h1>ou crie uma!</h1>
-      <button onClick={handleCriaSala} className={styles.btnWhite}>Criar uma partida agora<Plus size={24} /></button>
-      <hr />
+      {salas &&
+        <>
+          <h1>Entre em partida</h1>
+          <h1>ou crie uma!</h1>
+          <button onClick={handleCriaSala} className={styles.btnWhite}>Criar uma partida agora<Plus size={24} /></button>
+          <hr />
+        </>
+      }
       {
         salas ?
           salas.map(item => (
@@ -67,10 +94,18 @@ export default function Salas() {
               <div className={styles.partidas} >
                 <span>{item.player1_name}</span>
                 <h4>X</h4>
-                <button className={styles.btnEntrar}>Entre agora <GameController size={24} /></button>
+                {item.player2_name &&
+                  <span>{item.player2_name}</span>
+                }
+                {!item.player2_name ?
+                  <button className={styles.btnEntrar} onClick={() => handleEntraNaSala(item.id, item.player1_id)}>Entre agora <GameController size={24} /></button>
+                  :
+                  <button className={styles.btn}>Começar<PaperPlaneRight size={24} /></button>
+                }
               </div>
               <hr />
             </div>
+
           ))
           :
           <h2>Carregando...</h2>

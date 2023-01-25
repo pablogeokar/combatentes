@@ -7,7 +7,9 @@ export default async function handle(
 ) {
   if (req.method === "GET") {
     try {
-      const rooms = await prisma.rooms.findMany();
+      const rooms = await prisma.rooms.findMany({
+        orderBy: [{ createdAt: "desc" }],
+      });
       return res.json(rooms);
     } catch (error) {
       return res.json({ error: error });
