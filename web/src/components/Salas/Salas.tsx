@@ -1,7 +1,9 @@
+
 import { useEffect, useState } from 'react'
 import { GameController, Plus, PaperPlaneRight } from 'phosphor-react'
 import { signIn, useSession } from 'next-auth/react'
 import styles from './Salas.module.scss'
+import { useRouter } from 'next/navigation'
 
 interface SalasData {
   id: string
@@ -14,8 +16,12 @@ interface SalasData {
 export default function Salas() {
   const { data: session } = useSession()
   const [salas, setSalas] = useState<SalasData[]>([])
+  const router = useRouter()
+
 
   async function handleEntraNaSala(salaId: string, salaOwner: string) {
+    //http://localhost:3000/api/rooms/63cf128ddefb29f822b053d0
+
     if (!session) signIn('google')
 
     if (session?.user?.id === salaOwner) return alert('Você já está na sala, aguarde a entrada de outro jogador')
@@ -27,14 +33,18 @@ export default function Salas() {
           'Content-Type': 'application/json',
           'userid': `${session.user?.id}`,
           'username': `${session.user?.name}`,
+          'image': `${session.user?.image}`
         },
         body: JSON.stringify({
           player2_id: session.user?.id as string,
-          player2_name: session.user?.name
+          player2_name: session.user?.name,
+          player2_image: session.user?.image
         })
       })
     }
-    //http://localhost:3000/api/rooms/63cf128ddefb29f822b053d0
+
+    fetchData()
+
 
   }
 
@@ -50,7 +60,8 @@ export default function Salas() {
         },
         body: JSON.stringify({
           player1_id: session.user?.id,
-          player1_name: session.user?.name
+          player1_name: session.user?.name,
+          player1_image: session.user?.image
         })
       })
 
@@ -68,9 +79,12 @@ export default function Salas() {
     fetch('/api/rooms/').then(response => {
       return response.json()
     }).then(data => {
-      console.log(data)
       setSalas(data)
     })
+  }
+
+  function IniciaJogo(salaId: string) {
+    router.push(`/sala/${salaId}`);
   }
 
   useEffect(() => {
@@ -100,7 +114,7 @@ export default function Salas() {
                 {!item.player2_name ?
                   <button className={styles.btnEntrar} onClick={() => handleEntraNaSala(item.id, item.player1_id)}>Entre agora <GameController size={24} /></button>
                   :
-                  <button className={styles.btn}>Começar<PaperPlaneRight size={24} /></button>
+                  <button className={styles.btn} onClick={() => IniciaJogo(item.id)}>Começar<PaperPlaneRight size={24} /></button>
                 }
               </div>
               <hr />

@@ -16,6 +16,7 @@ export default async function handle(
       data: {
         player2_id: headers.userid as string,
         player2_name: headers.username as string,
+        player2_image: headers.image as string,
       },
     });
 

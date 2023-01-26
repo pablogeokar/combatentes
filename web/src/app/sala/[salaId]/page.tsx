@@ -1,6 +1,6 @@
 'use client'
 
-import css from './jogo.module.css'
+import css from './sala.module.css'
 import { Tabuleiro, Peca, DialogBox } from '@/components';
 
 export default function Jogo() {
