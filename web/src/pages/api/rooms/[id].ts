@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
 
+
 export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
@@ -21,5 +22,11 @@ export default async function handle(
     });
 
     return res.json({ room });
+  }
+
+  if (req.method === "GET") {
+    const id = req.query.id as string;
+    const sala = await prisma.rooms.findFirst({ where: { id } });
+    return res.json({ sala });
   }
 }

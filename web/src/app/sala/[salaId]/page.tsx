@@ -16,6 +16,12 @@ export default function Jogo() {
 
   return (
     <div className={css.page}>
+      <div className={css.header}>
+        <div>
+          <img src="" alt="" />
+        </div>
+      </div>
+
       <Tabuleiro />
 
       <div className={css.cards}>
@@ -48,7 +54,6 @@ export default function Jogo() {
         <Peca id="marechal" nome='Marechal' />
         <Peca id="espiao" nome='Espiao' />
       </div>
-
 
       <DialogBox>
         <h1>Início do jogo!</h1>
