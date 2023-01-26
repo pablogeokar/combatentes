@@ -17,12 +17,13 @@ export default async function handle(
   }
 
   if (req.method === "POST") {
-    const { player1_id, player1_name } = req.body;
+    const { player1_id, player1_name, player1_image } = req.body;
 
     const room = await prisma.rooms.create({
       data: {
         player1_id,
         player1_name,
+        player1_image,
       },
     });
 
