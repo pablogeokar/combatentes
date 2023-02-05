@@ -8,10 +8,12 @@ datasource db {
 }
 
 model Usuario {
-  id    String @id @default(uuid())
-  nome  String
-  login String @unique
-  senha String
+  id              String    @id @default(uuid())
+  nome            String
+  login           String    @unique
+  senha           String
+  PartidaRelacao1 Partida[] @relation(name: "PartidaJogador1")
+  PartidaRelacao2 Partida[] @relation(name: "PartidaJogador2")
 
   @@map("usuarios")
 }
@@ -22,6 +24,9 @@ model Partida {
   jogador1Pecas String?
   jogador2Id    String?
   jogador2Pecas String?
+
+  jogador1 Usuario? @relation(name: "PartidaJogador1", fields: [jogador1Id], references: [id])
+  jogador2 Usuario? @relation(name: "PartidaJogador2", fields: [jogador2Id], references: [id])
 
   @@map("partidas")
 }
