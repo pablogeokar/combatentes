@@ -7,10 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Usuario {
+  id    String @id @default(uuid())
+  nome  String
+  login String @unique
+  senha String
+
+  @@map("usuarios")
+}
+
 model Partida {
-  id        String  @id @default(uuid())
-  jogador_1 String
-  jogador_2 String?
+  id            String  @id @default(uuid())
+  jogador1Id    String
+  jogador1Pecas String?
+  jogador2Id    String?
+  jogador2Pecas String?
 
   @@map("partidas")
 }

@@ -2,15 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const partidaId = "c26f3fdb-089c-49fd-aa7a-0484c9c23c18";
 
 async function run() {
-  await prisma.partida.deleteMany();
+  await prisma.usuario.deleteMany();
 
-  await prisma.partida.create({
+  await prisma.usuario.create({
     data: {
-      id: partidaId,
-      jogador_1: "Pablo George",
+      nome: "Pablo",
+      login: "pablo",
+      senha: "123456",
     },
   });
 }
