@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import RoutesApp from "./routes";
+import { AuthContextProvider } from "./context/provider";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -9,20 +10,20 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     width: 100vw;
-    height: 100vh;
-    background: #606c88; 
-    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
-    background: linear-gradient(to right, #3f4c6b, #606c88);
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    height: 100vh;    
+    background: #F7F8F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8);  
+    background: linear-gradient(to right, #ACBB78, #F7F8F8); 
+    font-family: 'Poppins', sans-serif;
   }
 `;
 
 function App() {
   return (
-    <>
+    <AuthContextProvider>
       <GlobalStyle />
       <RoutesApp />
-    </>
+    </AuthContextProvider>
   );
 }
 
