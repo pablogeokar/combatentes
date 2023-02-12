@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import RoutesApp from "./routes";
 import { AuthContextProvider } from "./context/provider";
+import { ToastNotification } from "./components/ToastNotification/ToastLayout";
+import { ToastContextProvider } from "./components/ToastNotification/ToastProvider";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -18,11 +20,18 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const notifications = [
+  { id: 1, title: "Teste", text: "Mensagem de teste" },
+  { id: 2, title: "Teste 2", text: "Mensagem de teste 2" },
+];
+
 function App() {
   return (
     <AuthContextProvider>
       <GlobalStyle />
-      <RoutesApp />
+      <ToastContextProvider>
+        <RoutesApp />
+      </ToastContextProvider>
     </AuthContextProvider>
   );
 }

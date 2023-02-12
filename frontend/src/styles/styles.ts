@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
   display: grid;
   place-items: center;
@@ -7,7 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
-export const FormLogin = styled.form`
+export const Form = styled.form`
   position: relative;
   background-color: #ffffff;
   min-width: 350px;

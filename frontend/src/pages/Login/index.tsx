@@ -1,9 +1,31 @@
-import { Container, FormLogin, Title, InputText, Btn, Moita } from "./styles";
+import {
+  Container,
+  Form,
+  Title,
+  InputText,
+  Btn,
+  Moita,
+} from "../../styles/styles";
+
+import { FormEventHandler } from "react";
+import { useToastMessage } from "../../components/ToastNotification/useToastNotification";
 
 export function Login() {
+  const { toastMessage } = useToastMessage();
+
+  const handleLogin: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    toastMessage({
+      id: 1,
+      title: "Teste 1",
+      text: "Mensagem dew teste",
+      type: "Error",
+    });
+  };
+
   return (
     <Container>
-      <FormLogin>
+      <Form onSubmit={handleLogin}>
         <Moita src="/moita.png" />
         <Title>Login</Title>
         <div>
@@ -18,7 +40,7 @@ export function Login() {
         <div>
           <small>crie uma conta agora!</small>
         </div>
-      </FormLogin>
+      </Form>
     </Container>
   );
 }
