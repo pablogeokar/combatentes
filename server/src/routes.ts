@@ -258,7 +258,9 @@ export async function appRoutes(app: FastifyInstance) {
   app.post("/login", async (request) => {
     const { login, senha }: any = request.body;
 
-    const usuario = await prisma.usuario.findFirstOrThrow({
+    if (!login || !senha) return;
+
+    const usuario = await prisma.usuario.findMany({
       where: {
         login,
         senha,
@@ -266,11 +268,11 @@ export async function appRoutes(app: FastifyInstance) {
     });
 
     const token = jwt.sign(
-      { id: usuario.id }, // payload
+      { id: usuario[0].id }, // payload
       "Esta é a senha super secreta", // frase secreta
       { algorithm: "HS256", expiresIn: "60min" } // configurações gerais do token
     );
 
-    return { token };
+    return { token, nome: usuario[0].nome };
   });
 }
