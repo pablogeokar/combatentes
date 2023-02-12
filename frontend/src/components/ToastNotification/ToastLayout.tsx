@@ -43,7 +43,7 @@ export function ToastNotification({
     <Toast.Wrapper>
       {toastList?.map((toast) => (
         <Toast.Container key={toast.id}>
-          {toastList[0].type === "Error" && (
+          {toast.type === "Error" && (
             <div className="error">
               <HandPalm size={32} />
             </div>
