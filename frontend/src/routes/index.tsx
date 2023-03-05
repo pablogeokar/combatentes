@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Jogo } from "../pages/jogo";
 import { Login } from "../pages/Login";
 import { Cadastro } from "../pages/Cadastro";
+import { useAuth } from "./../context/hook";
 
 const Private = ({ Component }: any) => {
-  const logado = false;
+  const { logado } = useAuth();
 
   return logado ? <Component /> : <Login />;
 };

@@ -6,13 +6,16 @@ import {
   Btn,
   Moita,
 } from "../../styles/styles";
+import { redirect } from "react-router-dom";
 
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import { useToastMessage } from "../../components/ToastNotification/useToastNotification";
-import { api } from "../../lib/axios";
+
+import { useAuth } from "./../../context/hook";
 
 export function Login() {
   const [formData, setFormData] = useState({ login: "", senha: "" });
+  const { signin, logado } = useAuth();
 
   const { toastMessage } = useToastMessage();
 
@@ -28,16 +31,10 @@ export function Login() {
     }
 
     try {
-      const login = await api.post("/login", {
-        login: formData.login,
-        senha: formData.senha,
-      });
-
-      console.log(login.data);
+      signin(formData.login, formData.senha);
 
       toastMessage({
-        title: "Seja bem vindo,",
-        text: login.data.nome,
+        title: "Seja bem vindo",
       });
     } catch (error) {
       toastMessage({
@@ -47,6 +44,12 @@ export function Login() {
       });
     }
   };
+
+  console.log(logado);
+
+  useEffect(() => {
+    if (logado) redirect("/jogo");
+  }, []);
 
   return (
     <Container>

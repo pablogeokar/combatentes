@@ -1,3 +1,6 @@
+import { useAuth } from "../../context";
+
 export function Jogo() {
-    return <h1>Jogo</h1>
+  const { logout } = useAuth();
+  return <button onClick={logout}>Logout</button>;
 }
